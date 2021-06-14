@@ -8,7 +8,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using ShopWA.Controllers.Base;
 using ShopWA.Data;
+using ShopWA.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,11 +33,15 @@ namespace ShopWA
             var defaultConnectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<DataContext>(d => d.UseSqlServer(defaultConnectionString));
             services.AddAutoMapper(typeof(Startup));
-            services.AddControllers();
+            services.AddScoped(typeof(GenericRepository<>));
+            services.AddScoped(typeof(GenericControllerBase<,>));
+
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Shop", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ShopWA", Version = "v1", });
             });
+
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,9 +50,14 @@ namespace ShopWA
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Shop v1"));
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "ShopWA");
+            });
 
             app.UseHttpsRedirection();
 

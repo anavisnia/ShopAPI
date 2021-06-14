@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using ShopWA.Controllers.Base;
 using ShopWA.Dtos;
 using ShopWA.Entities;
@@ -11,6 +12,8 @@ using System.Threading.Tasks;
 
 namespace ShopWA.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class ShopController : GenericControllerBase<ShopDto, Shop>
     {
         public ShopController(IMapper mapper, GenericRepository<Shop> repository) : base(mapper, repository)
