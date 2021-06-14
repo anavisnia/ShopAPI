@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop.Modules.Base
+namespace Shop.Entities.Base
 {
     public class Entity
     {
