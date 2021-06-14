@@ -1,6 +1,6 @@
 using System;
 
-namespace Shop
+namespace ShopWA
 {
     public class WeatherForecast
     {

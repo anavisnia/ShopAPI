@@ -1,11 +1,11 @@
-﻿using Shop.Dtos.Base;
+﻿using ShopWA.Dtos.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop.Dtos
+namespace ShopWA.Dtos
 {
     public class ProductDto : DtoObject
     {

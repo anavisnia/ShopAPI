@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop.Dtos.Base
+namespace ShopWA.Dtos.Base
 {
     public class DtoObject
     {
         [Key]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [MaxLength(50)]
         public string Name { get; set; }
