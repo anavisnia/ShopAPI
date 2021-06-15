@@ -13,5 +13,13 @@ namespace ShopWAUnitTests
             //Assert.Equal("false", result);
             result.Should().Be("false");
         }
+
+        [Fact]
+        public void Test2()
+        {
+            var result = "false";
+            //Assert.Equal("false", result);
+            result.Should().Be("false");
+        }
     }
 }

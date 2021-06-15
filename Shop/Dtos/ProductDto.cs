@@ -13,6 +13,8 @@ namespace ShopWA.Dtos
 
         public int Quantity { get; set; }
 
+        public decimal? Price { get; set; } = 3.5M;
+
         public int ShopId { get; set; }
     }
 }

@@ -9,6 +9,5 @@ namespace ShopWA.Dtos
 {
     public class ShopDto : DtoObject
     {
-        
     }
 }
