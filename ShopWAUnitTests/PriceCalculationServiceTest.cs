@@ -15,7 +15,7 @@ namespace ShopWAUnitTests
         [Fact]
         public void ApplyDiscount_GivenRegularPrice_CalculateCorrectDiscount()
         {
-            var productDto = new ProductDto()
+            var product = new ProductDto()
             {
                 Price = 3.00M
             };
@@ -26,7 +26,7 @@ namespace ShopWAUnitTests
             var priceCalculationService = new PriceCalculationService(discountService);
 
             // Act
-            var discountedProduct = priceCalculationService.ApplyDiscount(productDto);
+            var discountedProduct = priceCalculationService.ApplyDiscount(product);
 
             // Assert
             discountedProduct.Price.Should().Be(2.70M);

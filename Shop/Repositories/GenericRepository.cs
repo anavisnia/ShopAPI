@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ShopWA.Data;
 using ShopWA.Entities.Base;
@@ -14,10 +15,12 @@ namespace ShopWA.Repositories
     {
         // repository is dealing with the databse operations
         private readonly DataContext _context;
+        private readonly IMapper _mapper;
 
-        public GenericRepository(DataContext context)
+        public GenericRepository(DataContext context, IMapper mapper)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         public async Task<List<T>> GetAll()
