@@ -20,4 +20,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Shop\ShopWA.csproj" />
+  </ItemGroup>
+
 </Project>

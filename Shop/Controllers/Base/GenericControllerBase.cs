@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using ShopWA.Dtos.Base;
 using ShopWA.Entities.Base;
 using ShopWA.Repositories;
+using ShopWA.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace ShopWA.Controllers.Base
         }
 
         [HttpGet]
-        public async Task<List<TDto>> GetAll()
+        public async virtual Task<List<TDto>> GetAll()
         {
             var entities = await _repository.GetAll();
 
