@@ -10,5 +10,7 @@ namespace ShopWA.Entities
     public class Shop : Entity
     {
         public List<Product> Products { get; set; }
+
+        public List<ShopOwnerShop> ShopOwnersShop { get; set; }
     }
 }
