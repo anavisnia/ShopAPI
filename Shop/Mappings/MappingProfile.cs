@@ -15,6 +15,9 @@ namespace ShopWA.Mappings
         public MappingProfile()
         {
             CreateMap<ProductDto, Product>().ReverseMap();
+            CreateMap<ProductDto, Vegetable>().ReverseMap();
+            CreateMap<ProductDto, Tableware>().ReverseMap();
+            CreateMap<ProductDto, Fruit>().ReverseMap();
             CreateMap<ShopDto, Shop>().ReverseMap();
         }
     }

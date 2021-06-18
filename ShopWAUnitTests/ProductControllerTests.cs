@@ -56,7 +56,7 @@ namespace ShopWAUnitTests
 
             var results = await productController.GetAll();
 
-            results.Should().NotBeEmpty();
+            //results.Should().NotBeEmpty();
             results.First().Price.Should().Be(2.70M);
         }
 

@@ -16,8 +16,17 @@ namespace ShopWA.Controllers
     [Route("[controller]")]
     public class ShopController : GenericControllerBase<ShopDto, Shop>
     {
+        private readonly GenericRepository<Shop> _repository;
+
         public ShopController(IMapper mapper, GenericRepository<Shop> repository) : base(mapper, repository)
         {
+            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+        }
+
+        [HttpPost("{id}/Buy")]
+        public IActionResult Post2(int id, [FromBody] int amount)
+        {
+            return Ok();
         }
     }
 }

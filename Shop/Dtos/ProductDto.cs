@@ -11,7 +11,7 @@ namespace ShopWA.Dtos
     {
         public string Type { get; set; }
 
-        public int Quantity { get; set; }
+        public int Quantity { get; set; } = 1;
 
         public decimal? Price { get; set; } = 3.5M;
 
