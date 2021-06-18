@@ -36,6 +36,8 @@ namespace ShopWA
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped(typeof(GenericRepository<>));
             services.AddScoped(typeof(GenericControllerBase<,>));
+            services.AddScoped<PriceCalculationService>();
+            services.AddScoped<DiscountService>();
 
             services.AddSwaggerGen(c =>
             {

@@ -35,7 +35,9 @@ namespace ShopWA.Controllers
 
             var dtos = _mapper.Map<List<ProductDto>>(entities);
 
-            var updatedDtos = dtos.Select(d => _priceCalculationService.ApplyDiscount(d));
+            //var updatedDtos = dtos.Select(d => _priceCalculationService.ApplyDiscount(d)).ToList();
+
+            dtos.ForEach(d => _priceCalculationService.ApplyDiscount(d));
 
             return dtos;
         }
