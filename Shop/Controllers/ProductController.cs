@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ShopWA.Controllers.Base;
+using ShopWA.Data;
 using ShopWA.Dtos;
 using ShopWA.Entities;
 using ShopWA.Repositories;
@@ -20,12 +21,14 @@ namespace ShopWA.Controllers
         private readonly IMapper _mapper;
         private readonly GenericRepository<Product> _repository;
         private readonly PriceCalculationService _priceCalculationService;
+        private readonly DataContext _context;
 
-        public ProductController(IMapper mapper, GenericRepository<Product> repository, PriceCalculationService priceCalculationService) : base(mapper, repository)
+        public ProductController(IMapper mapper, GenericRepository<Product> repository, PriceCalculationService priceCalculationService, DataContext context) : base(mapper, repository)
         {
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
             _priceCalculationService = priceCalculationService ?? throw new ArgumentNullException(nameof(priceCalculationService));
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         [HttpGet]
@@ -40,6 +43,16 @@ namespace ShopWA.Controllers
             dtos.ForEach(d => _priceCalculationService.ApplyDiscount(d));
 
             return dtos;
+        }
+
+        [HttpPost("/buy")]
+        public decimal Buy(BuyItemDto buyItemDto)
+        {
+            var item = _context.Products.FirstOrDefault(i => i.Name == buyItemDto.ItemName);
+
+            var totalPrice = (decimal)item.Price * buyItemDto.ItemQuantity;
+           
+            return (decimal)totalPrice;
         }
     }
 }

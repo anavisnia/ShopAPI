@@ -22,11 +22,5 @@ namespace ShopWA.Controllers
         {
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
-
-        [HttpPost("{id}/Buy")]
-        public IActionResult Post2(int id, [FromBody] int amount)
-        {
-            return Ok();
-        }
     }
 }
